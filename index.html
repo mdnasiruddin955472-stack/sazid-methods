@@ -596,15 +596,40 @@
 
   // Signup Function
   function performSignup() {
-    const fullName = document.getElementById('signupFullName').value.trim();
-    const className = document.getElementById('signupClass').value.trim();
-    const phone = document.getElementById('signupPhone').value.trim();
-    const email = document.getElementById('signupEmail').value.trim();
-    const studentId = document.getElementById('signupStudentId').value.trim();
-    const password = document.getElementById('signupPassword').value;
-    const confirmPass = document.getElementById('signupConfirmPass').value;
-    const errorSpan = document.getElementById('signupErrorMsg');
+const email = document.getElementById('signupEmail').value.trim();
+const studentId = document.getElementById('signupStudentId').value.trim();
+const password = document.getElementById('signupPassword').value;
+const errorSpan = document.getElementById('signupErrorMsg');
 
+// Username already exists check
+const existingUser = registeredUsers.find(
+  u => u.id.toLowerCase() === studentId.toLowerCase()
+);
+
+if (existingUser) {
+  errorSpan.innerText = '❌ Username already exists. Choose another username.';
+  return;
+}
+
+// Email already exists check
+const existingEmail = registeredUsers.find(
+  u => u.email.toLowerCase() === email.toLowerCase()
+);
+
+if (existingEmail) {
+  errorSpan.innerText = '❌ Email already registered.';
+  return;
+}
+
+// Password validation
+const strongPassword =
+/^(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{6,}$/;
+
+if (!strongPassword.test(password)) {
+  errorSpan.innerText =
+  '❌ Password must be 6+ characters with at least 1 number and 1 special character.';
+  return;
+}
     if (!fullName || !className || !phone || !email || !studentId || !password) {
       errorSpan.innerText = '❌ All fields are required';
       return;
