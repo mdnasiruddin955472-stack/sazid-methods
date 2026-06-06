@@ -673,5 +673,22 @@
   
   checkSession();
 </script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAzdN5xZfwbB4JQmguk56-GiVS9zQR-JxI",
+  authDomain: "sazids-methods.firebaseapp.com",
+  projectId: "sazids-methods",
+  storageBucket: "sazids-methods.firebasestorage.app",
+  messagingSenderId: "18623611224",
+  appId: "1:18623611224:web:f96fd594e04c9f52d7252d",
+  measurementId: "G-L23KT3C90W"
+};
+
+const app = initializeApp(firebaseConfig);
+
+console.log("Firebase Connected Successfully");
+</script>
 </body>
 </html>
