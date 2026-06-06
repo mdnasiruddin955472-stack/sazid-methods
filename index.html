@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Sazid Method's | Complete Student Portal with Signup & Login</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      scroll-behavior: smooth;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navigation */
+    .navbar {
+      background: white;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .nav-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 16px 0;
+    }
+    .logo h1 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #0f2b3d, #1e7e6c);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .logo p {
+      font-size: 0.75rem;
+      color: #2c7a6e;
+      font-weight: 500;
+    }
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #1e293b;
+      transition: 0.2s;
+      padding: 8px 16px;
+    }
+    .nav-links a:hover {
+      color: #1e7e6c;
+    }
+    .login-btn-nav, .signup-btn-nav {
+      border-radius: 40px;
+      padding: 8px 20px !important;
+    }
+    .login-btn-nav {
+      background: #1e7e6c10;
+      border: 1px solid #1e7e6c30;
+      color: #1e7e6c;
+    }
+    .signup-btn-nav {
+      background: #1e7e6c;
+      color: white !important;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background: #1e7e6c;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1rem;
+    }
+    .btn-primary:hover {
+      background: #0f5e50;
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #1e7e6c;
+      color: #1e7e6c;
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+    .btn-outline:hover {
+      background: #1e7e6c;
+      color: white;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 60px 0 50px;
+      background: linear-gradient(135deg, #f0f9f6 0%, #ffffff 100%);
+    }
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+    }
+    .hero-content {
+      flex: 1;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #0b2b26;
+    }
+    .highlight {
+      color: #1e7e6c;
+    }
+    .hero-badge {
+      background: #e0f2ef;
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    /* Sections */
+    .section {
+      padding: 60px 0;
+      border-bottom: 1px solid #eef2f6;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .section-title span {
+      border-bottom: 4px solid #1e7e6c;
+      display: inline-block;
+      padding-bottom: 8px;
+    }
+    .grid-3, .grid-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+    .card {
+      background: white;
+      border-radius: 28px;
+      padding: 28px 24px;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+      transition: 0.25s ease;
+      border: 1px solid #eef2f6;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+    }
+    .card i {
+      font-size: 2.2rem;
+      color: #1e7e6c;
+      margin-bottom: 18px;
+    }
+    .price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0f3b34;
+      margin: 16px 0 8px;
+    }
+
+    /* Dashboard */
+    .dashboard-panel {
+      background: linear-gradient(145deg, #f0fdf9, #ffffff);
+      border-radius: 36px;
+      padding: 28px;
+      margin: 40px 0;
+      box-shadow: 0 12px 20px -12px rgba(0,0,0,0.08);
+      border: 1px solid #cbdde0;
+    }
+    .dashboard-header {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+      border-bottom: 2px solid #c3e0da;
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+    .student-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      margin: 24px 0;
+    }
+    .stat-card {
+      background: white;
+      border-radius: 24px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .resource-list {
+      background: #f8fafc;
+      border-radius: 24px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .resource-list ul {
+      list-style: none;
+      margin-top: 12px;
+    }
+    .resource-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      max-width: 480px;
+      width: 90%;
+      border-radius: 32px;
+      padding: 32px 28px;
+      position: relative;
+      animation: fadeUp 0.25s ease;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    @keyframes fadeUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .close-modal {
+      position: absolute;
+      right: 20px;
+      top: 18px;
+      font-size: 28px;
+      cursor: pointer;
+      color: #94a3b8;
+    }
+    .input-group {
+      margin: 18px 0;
+    }
+    .input-group input, .input-group select {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 60px;
+      font-size: 1rem;
+      transition: 0.2s;
+    }
+    .input-group input:focus {
+      border-color: #1e7e6c;
+      outline: none;
+    }
+    .login-error {
+      color: #e53e3e;
+      font-size: 0.85rem;
+      margin: 8px 0;
+    }
+    .demo-hint {
+      background: #f1f5f9;
+      border-radius: 20px;
+      padding: 12px;
+      font-size: 0.8rem;
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    footer {
+      background: #0b2b26;
+      color: #ccdcd9;
+      padding: 40px 0;
+      text-align: center;
+    }
+    footer a {
+      color: #8bc5b9;
+    }
+
+    @media (max-width: 768px) {
+      .nav-flex {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      .section-title {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<div class="navbar">
+  <div class="container nav-flex">
+    <div class="logo">
+      <h1>SAZID METHOD'S</h1>
+      <p>Learn Smart. Speak Confidently.</p>
+    </div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#courses">Courses</a>
+      <a href="#whyus">Why Us</a>
+      <a href="javascript:void(0)" class="login-btn-nav" id="openLoginModalBtn"><i class="fas fa-sign-in-alt"></i> Login</a>
+      <a href="javascript:void(0)" class="signup-btn-nav" id="openSignupModalBtn"><i class="fas fa-user-plus"></i> Sign Up</a>
+    </div>
+  </div>
+</div>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fas fa-chalkboard-user"></i> Modern & Result-Oriented</div>
+      <h1>Transform Your <span class="highlight">English</span>,<br> Transform Your Future</h1>
+      <p style="font-size:1.1rem; margin: 20px 0; color:#334155;">Master English for School, SSC, HSC & beyond with smart digital tools, personalized coaching, and powerful student dashboard.</p>
+      <button class="btn-primary" id="heroSignupBtn"><i class="fas fa-user-plus"></i> Create Free Account</button>
+    </div>
+    <div style="flex:0.7; text-align:center;">
+      <i class="fas fa-language" style="font-size: 8rem; color:#1e7e6c20;"></i>
+      <i class="fas fa-graduation-cap" style="font-size: 5rem; color:#1e7e6c40; margin-left: -20px;"></i>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section with Smart Login System Highlight -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-title"><span>💎 Special Features & Smart Portal</span></div>
+    <div class="grid-features">
+      <div class="card"><i class="fas fa-laptop-code"></i><h3>🔐 Student Portal</h3><p>Secure Signup & Login. Access notes, results, attendance & performance reports anywhere.</p></div>
+      <div class="card"><i class="fas fa-chart-line"></i><h3>📊 Weekly Tests</h3><p>Regular assessments & monthly progress reports with personalized feedback.</p></div>
+      <div class="card"><i class="fas fa-download"></i><h3>📘 Digital Resources</h3><p>Download class notes, practice sheets, model tests & smart handouts instantly.</p></div>
+      <div class="card"><i class="fas fa-calendar-alt"></i><h3>📅 Schedule & Notices</h3><p>Real-time class schedules, exam updates & parent monitoring system.</p></div>
+      <div class="card"><i class="fas fa-trophy"></i><h3>🏆 Performance Tracking</h3><p>View rankings, attendance records, and instant academic updates.</p></div>
+      <div class="card"><i class="fas fa-users"></i><h3>👥 Small Batch</h3><p>Individual attention, doubt-clearing sessions & friendly environment.</p></div>
+    </div>
+    <div style="background: linear-gradient(120deg, #e6f4f0, #ffffff); border-radius: 40px; padding: 28px; margin-top: 30px; text-align:center;">
+      <i class="fas fa-microchip" style="font-size: 2rem; color:#1e7e6c;"></i>
+      <p style="font-weight: 600; margin-top: 8px;">🚀 Powered by a Smart Digital Learning System with Student Login Portal, Online Progress Tracking, Digital Notes, Attendance Monitoring, and Instant Academic Updates.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Sazid Method's -->
+<section class="section" id="whyus">
+  <div class="container">
+    <div class="section-title"><span>Why Choose Sazid Method's?</span></div>
+    <div class="grid-3">
+      <div class="card"><i class="fas fa-brain"></i><h3>Concept-Based Learning</h3><p>No rote memorization — logical grammar & real-world usage.</p></div>
+      <div class="card"><i class="fas fa-pen-fancy"></i><h3>Writing Excellence Program</h3><p>Paragraph, composition, letter, CV, email mastery.</p></div>
+      <div class="card"><i class="fas fa-chart-simple"></i><h3>Exam Oriented Preparation</h3><p>SSC/HSC board analysis, model tests, revision programs.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Courses & Fees -->
+<section class="section" id="courses">
+  <div class="container">
+    <div class="section-title"><span>📚 Courses & Monthly Fees</span></div>
+    <div class="grid-3">
+      <div class="card"><h3>Class 8</h3><div class="price">BDT 700</div><p>Complete grammar & writing foundation</p></div>
+      <div class="card"><h3>Class 9</h3><div class="price">BDT 800</div><p>Advanced reading & composition</p></div>
+      <div class="card"><h3>Class 10 / SSC</h3><div class="price">BDT 800 - 1000</div><p>Board exam focused, intensive revision</p></div>
+      <div class="card"><h3>SSC Special Batch</h3><div class="price">BDT 1,000</div><p>Model tests & problem solving</p></div>
+      <div class="card"><h3>HSC Special Batch</h3><div class="price">BDT 1,200</div><p>Grammar mastery + writing excellence</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Live Dashboard Area (After Login/Signup) -->
+<div id="liveDashboardArea" class="container"></div>
+
+<!-- Admission Banner -->
+<section class="section" style="background:#eaf8f4; border-radius: 0px;">
+  <div class="container" style="text-align:center;">
+    <h2 style="font-size: 2rem;">📢 ADMISSION OPEN NOW!</h2>
+    <p style="margin: 16px 0;">Limited Seats • Quality Education • Professional Guidance • Proven Results</p>
+    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+      <div><i class="fas fa-phone-alt"></i> 📞 +880 1XXX-XXXXXX</div>
+      <div><i class="fas fa-map-marker-alt"></i> 📍 Dhaka, Bangladesh</div>
+    </div>
+    <button class="btn-primary" id="footerSignupBtn" style="margin-top: 20px;"><i class="fas fa-graduation-cap"></i> Register for Free Demo</button>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <h3 style="color: white;">SAZID METHOD'S</h3>
+    <p><i>Learn Smart. Speak Confidently. Achieve Excellence.</i></p>
+    <p style="margin-top: 12px;">Transform Your English, Transform Your Future — Powered by Smart Digital Ecosystem</p>
+    <small>© 2025 Sazid Method's | All rights reserved</small>
+  </div>
+</footer>
+
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" id="closeModalBtn">&times;</span>
+    <h2><i class="fas fa-user-lock"></i> Student Login</h2>
+    <p style="margin-bottom: 12px;">Login with your Student ID & Password</p>
+    <div class="input-group">
+      <input type="text" id="studentId" placeholder="Student ID (e.g., SAZID-101)" autocomplete="off">
+    </div>
+    <div class="input-group">
+      <input type="password" id="studentPass" placeholder="Password">
+    </div>
+    <div id="loginErrorMsg" class="login-error"></div>
+    <button class="btn-primary" id="doLoginBtn" style="width:100%; justify-content:center;">Login → Dashboard</button>
+    <div class="demo-hint">
+      <i class="fas fa-info-circle"></i> Demo: <strong>SAZID-101 / 1234</strong> or <strong>student / demo</strong><br>
+      New user? <a href="javascript:void(0)" id="switchToSignupFromLogin" style="color:#1e7e6c;">Create an account</a>
+    </div>
+  </div>
+</div>
+
+<!-- SIGNUP MODAL -->
+<div id="signupModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" id="closeSignupBtn">&times;</span>
+    <h2><i class="fas fa-user-plus"></i> Student Registration</h2>
+    <p style="margin-bottom: 12px;">Create your account to access the smart portal</p>
+    <div class="input-group"><input type="text" id="signupFullName" placeholder="Full Name"></div>
+    <div class="input-group"><input type="text" id="signupClass" placeholder="Class (e.g., Class 8, SSC, HSC)"></div>
+    <div class="input-group"><input type="text" id="signupPhone" placeholder="Phone Number"></div>
+    <div class="input-group"><input type="email" id="signupEmail" placeholder="Email Address"></div>
+    <div class="input-group"><input type="text" id="signupStudentId" placeholder="Choose Student ID (e.g., SAZID-2025-01)"></div>
+    <div class="input-group"><input type="password" id="signupPassword" placeholder="Create Password (min 4 chars)"></div>
+    <div class="input-group"><input type="password" id="signupConfirmPass" placeholder="Confirm Password"></div>
+    <div id="signupErrorMsg" class="login-error"></div>
+    <button class="btn-primary" id="doSignupBtn" style="width:100%; justify-content:center;">Register Now →</button>
+    <div class="demo-hint">
+      <i class="fas fa-info-circle"></i> Already have an account? 
+      <a href="javascript:void(0)" id="switchToLoginFromSignup" style="color:#1e7e6c; font-weight:600;">Login here</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ---------- Complete Signup + Login System with LocalStorage ----------
+  let registeredUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+  
+  // Add demo users if empty
+  if (registeredUsers.length === 0) {
+    registeredUsers = [
+      { id: "SAZID-101", pass: "1234", name: "Rafiqul Islam", batch: "SSC Special 2025", class: "Class 10", attendance: "92%", avgScore: "84%", rank: "12th", phone: "017xxxxxx", email: "rafiq@example.com" },
+      { id: "student", pass: "demo", name: "Samia Ahmed", batch: "HSC 2026", class: "HSC 1st Year", attendance: "88%", avgScore: "79%", rank: "24th", phone: "018xxxxxx", email: "samia@example.com" }
+    ];
+    localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+  }
+
+  // DOM Elements
+  const loginModal = document.getElementById('loginModal');
+  const signupModal = document.getElementById('signupModal');
+  const openLoginBtn = document.getElementById('openLoginModalBtn');
+  const openSignupBtn = document.getElementById('openSignupModalBtn');
+  const heroSignupBtn = document.getElementById('heroSignupBtn');
+  const footerSignupBtn = document.getElementById('footerSignupBtn');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  const closeSignupBtn = document.getElementById('closeSignupBtn');
+  const doLoginBtn = document.getElementById('doLoginBtn');
+  const doSignupBtn = document.getElementById('doSignupBtn');
+  const studentIdInput = document.getElementById('studentId');
+  const studentPassInput = document.getElementById('studentPass');
+  const loginError = document.getElementById('loginErrorMsg');
+  const switchToSignup = document.getElementById('switchToSignupFromLogin');
+  const switchToLogin = document.getElementById('switchToLoginFromSignup');
+  const dashboardArea = document.getElementById('liveDashboardArea');
+
+  // Render Dashboard Function
+  function renderDashboard(student) {
+    if (!student) return;
+    dashboardArea.innerHTML = `
+      <div class="dashboard-panel" id="studentDashboard">
+        <div class="dashboard-header">
+          <div>
+            <i class="fas fa-id-card"></i> <strong style="font-size:1.3rem;">Welcome, ${student.name}</strong><br>
+            <span style="font-size:0.85rem;">ID: ${student.id} | Batch: ${student.batch} | Class: ${student.class}</span>
+          </div>
+          <button class="btn-outline" id="logoutDashboardBtn" style="padding:8px 20px;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+        <div class="student-stats">
+          <div class="stat-card"><i class="fas fa-calendar-check"></i><h3>Attendance</h3><p>${student.attendance}</p></div>
+          <div class="stat-card"><i class="fas fa-chart-simple"></i><h3>Avg. Score</h3><p>${student.avgScore}</p></div>
+          <div class="stat-card"><i class="fas fa-medal"></i><h3>Class Rank</h3><p>${student.rank}</p></div>
+        </div>
+        <div class="resource-list">
+          <h4><i class="fas fa-folder-open"></i> 📚 Learning Materials & Updates</h4>
+          <ul>
+            <li>✅ <a href="#" style="color:#1e7e6c;">Download - Tense Mastery Notes (PDF)</a></li>
+            <li>✅ <a href="#" style="color:#1e7e6c;">Weekly Test Result - March 2025</a></li>
+            <li>✅ <a href="#" style="color:#1e7e6c;">Assignment: Narration Practice Sheet</a></li>
+            <li>✅ <a href="#" style="color:#1e7e6c;">Model Test (SSC Board Question 2024)</a></li>
+          </ul>
+        </div>
+        <div style="background:#eef2f1; border-radius: 24px; margin-top: 20px; padding: 18px;">
+          <p><i class="fas fa-bell"></i> 📢 Upcoming: Monthly Exam on 5th April | Class Schedule updated</p>
+          <p><i class="fas fa-chart-line"></i> <strong>Performance trend:</strong> Writing skills improved +12% this month.</p>
+          <p><i class="fas fa-user-check"></i> Parent Monitoring: <span style="color:green;">Active - progress report shared</span></p>
+        </div>
+      </div>
+    `;
+    const logoutBtn = document.getElementById('logoutDashboardBtn');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', () => {
+        sessionStorage.removeItem('activeStudent');
+        dashboardArea.innerHTML = '';
+        alert('Logged out successfully. Come back soon!');
+      });
+    }
+    // Prevent link navigation demo
+    document.querySelectorAll('.resource-list a').forEach(link => {
+      link.addEventListener('click', (e) => { e.preventDefault(); alert('📘 Full learning materials available for enrolled students. Contact academy for access.'); });
+    });
+  }
+
+  function checkSession() {
+    const stored = sessionStorage.getItem('activeStudent');
+    if (stored) {
+      try {
+        renderDashboard(JSON.parse(stored));
+      } catch(e) { console.warn(e); }
+    }
+  }
+
+  // Login Function
+  function performLogin() {
+    const id = studentIdInput.value.trim();
+    const pass = studentPassInput.value.trim();
+    loginError.innerText = '';
+    if (!id || !pass) {
+      loginError.innerText = '❌ Please enter Student ID and Password';
+      return;
+    }
+    const matched = registeredUsers.find(u => u.id === id && u.pass === pass);
+    if (matched) {
+      sessionStorage.setItem('activeStudent', JSON.stringify(matched));
+      renderDashboard(matched);
+      loginModal.style.display = 'none';
+      studentIdInput.value = '';
+      studentPassInput.value = '';
+      dashboardArea.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      loginError.innerText = '❌ Invalid Student ID or Password. Please Signup first.';
+    }
+  }
+
+  // Signup Function
+  function performSignup() {
+    const fullName = document.getElementById('signupFullName').value.trim();
+    const className = document.getElementById('signupClass').value.trim();
+    const phone = document.getElementById('signupPhone').value.trim();
+    const email = document.getElementById('signupEmail').value.trim();
+    const studentId = document.getElementById('signupStudentId').value.trim();
+    const password = document.getElementById('signupPassword').value;
+    const confirmPass = document.getElementById('signupConfirmPass').value;
+    const errorSpan = document.getElementById('signupErrorMsg');
+
+    if (!fullName || !className || !phone || !email || !studentId || !password) {
+      errorSpan.innerText = '❌ All fields are required';
+      return;
+    }
+    if (password !== confirmPass) {
+      errorSpan.innerText = '❌ Passwords do not match';
+      return;
+    }
+    if (password.length < 4) {
+      errorSpan.innerText = '❌ Password must be at least 4 characters';
+      return;
+    }
+    if (registeredUsers.some(u => u.id === studentId)) {
+      errorSpan.innerText = '❌ This Student ID already exists. Please choose another.';
+      return;
+    }
+
+    const newUser = {
+      id: studentId,
+      pass: password,
+      name: fullName,
+      batch: className,
+      class: className,
+      attendance: "100%",
+      avgScore: "0%",
+      rank: "New",
+      phone: phone,
+      email: email
+    };
+    registeredUsers.push(newUser);
+    localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
+    sessionStorage.setItem('activeStudent', JSON.stringify(newUser));
+    renderDashboard(newUser);
+    signupModal.style.display = 'none';
+    // Clear form
+    document.getElementById('signupFullName').value = '';
+    document.getElementById('signupClass').value = '';
+    document.getElementById('signupPhone').value = '';
+    document.getElementById('signupEmail').value = '';
+    document.getElementById('signupStudentId').value = '';
+    document.getElementById('signupPassword').value = '';
+    document.getElementById('signupConfirmPass').value = '';
+    alert(`✅ Registration Successful! Welcome ${fullName}.\nYour Student ID: ${studentId}\nYou are now logged in.`);
+    dashboardArea.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Event Listeners
+  openLoginBtn?.addEventListener('click', () => loginModal.style.display = 'flex');
+  openSignupBtn?.addEventListener('click', () => signupModal.style.display = 'flex');
+  if (heroSignupBtn) heroSignupBtn.addEventListener('click', () => signupModal.style.display = 'flex');
+  if (footerSignupBtn) footerSignupBtn.addEventListener('click', () => signupModal.style.display = 'flex');
+  closeModalBtn?.addEventListener('click', () => loginModal.style.display = 'none');
+  closeSignupBtn?.addEventListener('click', () => signupModal.style.display = 'none');
+  window.addEventListener('click', (e) => {
+    if (e.target === loginModal) loginModal.style.display = 'none';
+    if (e.target === signupModal) signupModal.style.display = 'none';
+  });
+  doLoginBtn?.addEventListener('click', performLogin);
+  doSignupBtn?.addEventListener('click', performSignup);
+  if (switchToSignup) switchToSignup.addEventListener('click', () => { loginModal.style.display = 'none'; signupModal.style.display = 'flex'; });
+  if (switchToLogin) switchToLogin.addEventListener('click', () => { signupModal.style.display = 'none'; loginModal.style.display = 'flex'; });
+  
+  // Enter key login
+  studentIdInput?.addEventListener('keypress', (e) => { if (e.key === 'Enter') performLogin(); });
+  studentPassInput?.addEventListener('keypress', (e) => { if (e.key === 'Enter') performLogin(); });
+  
+  checkSession();
+</script>
+</body>
+</html>
