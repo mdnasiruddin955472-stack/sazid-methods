@@ -630,34 +630,42 @@ if (!strongPassword.test(password)) {
   '❌ Password must be 6+ characters with at least 1 number and 1 special character.';
   return;
 }
-    if (!fullName || !className || !phone || !email || !studentId || !password) {
-      errorSpan.innerText = '❌ All fields are required';
-      return;
-    }
-    if (password !== confirmPass) {
-      errorSpan.innerText = '❌ Passwords do not match';
-      return;
-    }
-    if (password.length < 4) {
-      errorSpan.innerText = '❌ Password must be at least 4 characters';
-      return;
-    }
-    if (registeredUsers.some(u => u.id === studentId)) {
-      errorSpan.innerText = '❌ This Student ID already exists. Please choose another.';
-      return;
-    }
+   if (!studentId || !email || !password) {
+  errorSpan.innerText = '❌ Username, Email and Password are required';
+  return;
+}
 
-    const newUser = {
-      id: studentId,
-      pass: password,
-      name: fullName,
-      batch: className,
-      class: className,
-      attendance: "100%",
-      avgScore: "0%",
-      rank: "New",
-      phone: phone,
-      email: email
+// Username unique check
+if (registeredUsers.some(u => u.id.toLowerCase() === studentId.toLowerCase())) {
+  errorSpan.innerText = '❌ Username already exists';
+  return;
+}
+
+// Email unique check
+if (registeredUsers.some(u => u.email.toLowerCase() === email.toLowerCase())) {
+  errorSpan.innerText = '❌ Email already registered';
+  return;
+}
+
+// Password: minimum 6 chars + number + special character
+const strongPassword =
+/^(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{6,}$/;
+
+if (!strongPassword.test(password)) {
+  errorSpan.innerText =
+  '❌ Password must be 6+ characters with a number and special character';
+  return;
+}
+
+const newUser = {
+  id: studentId,
+  email: email,
+  pass: password,
+
+  attendance: "100%",
+  avgScore: "0%",
+  rank: "New"
+};
     };
     registeredUsers.push(newUser);
     localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
